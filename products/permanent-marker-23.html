@@ -6,152 +6,31 @@
 <title>Permanent Marker #23 — Bandit Budz</title>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
 <style>
-:root{
-  --lime:#7fff00;
-  --bg:#080808;
-  --card:#111;
-  --border:#1e1e1e;
-  --text:#e0e0e0;
-  --muted:#666;
-}
+:root{--lime:#7fff00;--bg:#080808;--card:#111;--border:#1e1e1e;--text:#e0e0e0;--muted:#666}
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Barlow',sans-serif;
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.topbar{
-  width:100%;
-  background:#000;
-  border-bottom:1px solid var(--border);
-  padding:12px 20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.brand{
-  font-family:'Oswald',sans-serif;
-  font-size:16px;
-  letter-spacing:4px;
-  color:var(--lime);
-  text-decoration:none;
-}
-.variant-tag{
-  font-size:11px;
-  letter-spacing:2px;
-  color:var(--muted);
-  font-family:'Barlow',sans-serif;
-}
-.hero{
-  width:100%;
-  max-width:500px;
-  padding:28px 20px 0;
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-.strain-img{
-  width:100%;
-  max-width:340px;
-  height:340px;
-  object-fit:cover;
-  border-radius:16px;
-  border:2px solid #1a1a1a;
-  display:block;
-}
-.strain-img-placeholder{
-  width:340px;height:340px;background:#111;border-radius:16px;
-  display:flex;align-items:center;justify-content:center;
-  border:2px solid var(--border);
-  font-family:'Oswald',sans-serif;font-size:24px;color:var(--lime);letter-spacing:3px;text-align:center;padding:20px;
-}
-.strain-name{
-  font-family:'Oswald',sans-serif;
-  font-size:32px;
-  letter-spacing:3px;
-  color:#fff;
-  margin-top:22px;
-  text-align:center;
-  text-transform:uppercase;
-}
-.strain-num{
-  font-size:12px;
-  letter-spacing:4px;
-  color:var(--lime);
-  margin-top:4px;
-  text-align:center;
-}
-.badges{
-  display:flex;
-  gap:8px;
-  margin-top:14px;
-  flex-wrap:wrap;
-  justify-content:center;
-}
-.badge{
-  background:#141414;
-  border:1px solid #252525;
-  border-radius:20px;
-  padding:5px 14px;
-  font-size:11px;
-  letter-spacing:1.5px;
-  color:var(--muted);
-  text-transform:uppercase;
-}
-.badge.type{color:var(--lime);border-color:#2a3a00;background:#0d1a00;}
-.card{
-  width:100%;
-  max-width:500px;
-  margin:20px 20px 0;
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:14px;
-  padding:20px 22px;
-}
-.card-label{
-  font-size:9px;
-  letter-spacing:3px;
-  color:var(--lime);
-  text-transform:uppercase;
-  margin-bottom:8px;
-}
-.card p{
-  font-size:14px;
-  color:#aaa;
-  line-height:1.75;
-}
-.info-grid{
-  width:100%;
-  max-width:500px;
-  margin:16px 20px 0;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-.info-cell{
-  background:var(--card);
-  border:1px solid var(--border);
-  border-radius:10px;
-  padding:14px 16px;
-}
-.info-cell .lbl{font-size:8px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:5px;}
-.info-cell .val{font-size:13px;color:#ddd;font-weight:600;}
-.footer{
-  width:100%;
-  max-width:500px;
-  margin:24px 20px 40px;
-  border-top:1px solid var(--border);
-  padding-top:20px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-}
-.footer-brand{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:4px;color:var(--muted);}
-.footer-url{font-size:10px;color:#333;letter-spacing:1px;}
+body{background:var(--bg);color:var(--text);font-family:'Barlow',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center}
+.topbar{width:100%;background:#000;border-bottom:1px solid var(--border);padding:12px 20px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:4px;color:var(--lime);text-decoration:none}
+.variant-tag{font-size:11px;letter-spacing:2px;color:var(--muted)}
+.hero{width:100%;max-width:500px;padding:28px 20px 0;display:flex;flex-direction:column;align-items:center}
+.strain-img{width:100%;max-width:340px;height:340px;object-fit:cover;border-radius:16px;border:2px solid #1a1a1a;display:block}
+.strain-name{font-family:'Oswald',sans-serif;font-size:32px;letter-spacing:3px;color:#fff;margin-top:22px;text-align:center;text-transform:uppercase}
+.strain-num{font-size:12px;letter-spacing:4px;color:var(--lime);margin-top:4px;text-align:center}
+.badges{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap;justify-content:center}
+.badge{background:#141414;border:1px solid #252525;border-radius:20px;padding:5px 14px;font-size:11px;letter-spacing:1.5px;color:var(--muted);text-transform:uppercase}
+.badge.type{color:var(--lime);border-color:#2a3a00;background:#0d1a00}
+.card{width:100%;max-width:500px;margin:20px 20px 0;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:20px 22px}
+.card-label{font-size:9px;letter-spacing:3px;color:var(--lime);text-transform:uppercase;margin-bottom:8px}
+.card p{font-size:14px;color:#aaa;line-height:1.75}
+.info-grid{width:100%;max-width:500px;margin:16px 20px 0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.info-cell{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:14px 16px}
+.info-cell .lbl{font-size:8px;letter-spacing:3px;color:var(--muted);text-transform:uppercase;margin-bottom:5px}
+.info-cell .val{font-size:13px;color:#ddd;font-weight:600}
+.scan-cell{background:#0d1a00;border:1px solid #2a3a00}
+.scan-cell .val{color:var(--lime);font-size:20px}
+.footer{width:100%;max-width:500px;margin:24px 20px 40px;border-top:1px solid var(--border);padding-top:20px;display:flex;justify-content:space-between;align-items:center}
+.footer-brand{font-family:'Oswald',sans-serif;font-size:13px;letter-spacing:4px;color:var(--muted)}
+.footer-url{font-size:10px;color:#333;letter-spacing:1px}
 </style>
 </head>
 <body>
@@ -170,7 +49,7 @@ body{
 </div>
 <div class="card" style="margin-top:22px">
   <div class="card-label">About This Strain</div>
-  <p>Raw gas and fuel with sweet floral undertones. Permanent Marker is bold, brash, and unforgettable. Heavy resin production, thick smoke, and a knockout potency that leaves a lasting impression — just like the name says.</p>
+  <p>Raw gas and fuel with sweet floral undertones. Permanent Marker is bold, brash, and unforgettable. Heavy resin production, thick smoke, and a knockout potency that leaves a lasting impression.</p>
 </div>
 <div class="info-grid">
   <div class="info-cell">
@@ -185,14 +64,24 @@ body{
     <div class="lbl">Batch</div>
     <div class="val">PERMANENT-MARKER-23</div>
   </div>
-  <div class="info-cell">
-    <div class="lbl">Verified By</div>
-    <div class="val">Bandit Budz</div>
+  <div class="info-cell scan-cell">
+    <div class="lbl">Times Scanned</div>
+    <div class="val" id="scan-count">—</div>
   </div>
 </div>
 <div class="footer">
   <span class="footer-brand">BANDIT BUDZ</span>
   <span class="footer-url">banditbudz.com</span>
 </div>
+
+<script>
+// Count this scan silently
+fetch('https://api.countapi.xyz/hit/banditbudz/permanent-marker-23')
+  .then(r=>r.json())
+  .then(d=>{
+    const el = document.getElementById('scan-count');
+    if(el) el.textContent = d.value;
+  }).catch(()=>{});
+</script>
 </body>
 </html>

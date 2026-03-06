@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scan Dashboard — Bandit Budz</title>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Barlow:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--lime:#7fff00;--bg:#080808;--card:#111;--border:#1e1e1e;--muted:#666}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:#e0e0e0;font-family:'Barlow',sans-serif;padding:0 0 60px}
+.topbar{background:#000;border-bottom:1px solid var(--border);padding:14px 24px;display:flex;justify-content:space-between;align-items:center}
+.brand{font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:4px;color:var(--lime);text-decoration:none}
+h1{font-family:'Oswald',sans-serif;font-size:22px;letter-spacing:3px;color:#fff;padding:30px 24px 6px;text-transform:uppercase}
+.sub{font-size:12px;color:var(--muted);padding:0 24px 24px;letter-spacing:1px}
+.strain-block{margin:0 16px 16px;background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.strain-header{padding:14px 18px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border);cursor:pointer}
+.strain-header h2{font-family:'Oswald',sans-serif;font-size:16px;letter-spacing:2px;color:#fff;text-transform:uppercase}
+.strain-total{font-family:'Oswald',sans-serif;font-size:20px;color:var(--lime)}
+.strain-total span{font-size:10px;letter-spacing:2px;color:var(--muted);font-family:'Barlow',sans-serif;display:block;text-align:right}
+.variants{display:grid;grid-template-columns:repeat(5,1fr);gap:1px;background:var(--border)}
+.v{background:var(--bg);padding:10px 6px;text-align:center}
+.v .num{font-size:9px;color:var(--muted);letter-spacing:1px;margin-bottom:4px}
+.v .count{font-family:'Oswald',sans-serif;font-size:16px;color:#fff}
+.v .count.hot{color:var(--lime)}
+.loading{color:#333;font-size:11px}
+.refresh-btn{display:block;margin:20px auto 0;padding:10px 32px;background:transparent;border:1px solid var(--border);color:var(--muted);border-radius:8px;cursor:pointer;font-family:'Barlow',sans-serif;font-size:13px;letter-spacing:1px}
+.refresh-btn:hover{border-color:var(--lime);color:var(--lime)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <a class="brand" href="https://banditbudz.com">BANDIT BUDZ</a>
+  <span style="font-size:11px;color:var(--muted);letter-spacing:2px">SCAN DASHBOARD</span>
+</div>
+<h1>Scan Tracker</h1>
+<p class="sub">Live QR scan counts across all 240 variants</p>
+<div id="dashboard"></div>
+<button class="refresh-btn" onclick="loadAll()">↻ Refresh</button>
+
+<script>
+const strains = [
+  {slug:'crunch-berries', name:'Crunch Berries'},
+  {slug:'giraffe-puzzy', name:'Giraffe Puzzy'},
+  {slug:'gushers', name:'Gushers'},
+  {slug:'magic-marker', name:'Magic Marker'},
+  {slug:'mega-z-dark', name:'Mega Z Dark'},
+  {slug:'ozk', name:'OZK'},
+  {slug:'permanent-marker', name:'Permanent Marker'},
+  {slug:'the-keeper', name:'The Keeper'},
+];
+
+async function getCount(slug, num) {
+  const key = `${slug}-${String(num).padStart(2,'0')}`;
+  try {
+    const r = await fetch(`https://api.countapi.xyz/get/banditbudz/${key}`);
+    const d = await r.json();
+    return d.value || 0;
+  } catch { return 0; }
+}
+
+async function loadAll() {
+  const dash = document.getElementById('dashboard');
+  dash.innerHTML = '';
+  
+  for (const strain of strains) {
+    const block = document.createElement('div');
+    block.className = 'strain-block';
+    block.innerHTML = `
+      <div class="strain-header">
+        <h2>${strain.name}</h2>
+        <div class="strain-total"><span>TOTAL SCANS</span><span id="total-${strain.slug}">…</span></div>
+      </div>
+      <div class="variants" id="vars-${strain.slug}">
+        ${Array.from({length:30},(_,i)=>`<div class="v"><div class="num">#${String(i+1).padStart(2,'0')}</div><div class="count loading" id="c-${strain.slug}-${String(i+1).padStart(2,'0')}">…</div></div>`).join('')}
+      </div>`;
+    dash.appendChild(block);
+
+    // Load all 30 variants for this strain
+    let total = 0;
+    const promises = Array.from({length:30}, async (_,i) => {
+      const num = i+1;
+      const num_str = String(num).padStart(2,'0');
+      const count = await getCount(strain.slug, num);
+      total += count;
+      const el = document.getElementById(`c-${strain.slug}-${num_str}`);
+      if(el) {
+        el.textContent = count;
+        el.className = 'count' + (count > 0 ? ' hot' : '');
+      }
+      document.getElementById(`total-${strain.slug}`).textContent = total;
+    });
+    await Promise.all(promises);
+    document.getElementById(`total-${strain.slug}`).textContent = total;
+  }
+}
+
+loadAll();
+</script>
+</body>
+</html>

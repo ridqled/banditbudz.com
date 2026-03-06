@@ -1,8 +1,6 @@
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Bandit Budz — Gushers — A4 Print Sheet</title>
+<html><head><meta charset="UTF-8">
+<title>Bandit Budz — Gushers — Print Sheet</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <style>
 @page{size:A4;margin:8mm}
@@ -19,33 +17,13 @@ body{font-family:Arial,sans-serif;background:#fff}
 .s-num{font-size:13pt;font-weight:900;color:#000;margin-top:2.5mm;letter-spacing:2px}
 .s-dates{font-size:5pt;color:#666;margin-top:1.5mm;text-align:center;line-height:1.6}
 .s-brand{font-size:5.5pt;font-weight:900;letter-spacing:2px;color:#000;margin-top:1.5mm;text-transform:uppercase}
-</style>
-</head>
-<body>
+</style></head><body>
 <div class="screen">🌿 BANDIT BUDZ — GUSHERS PRINT SHEET <small>30 QR labels · 5 A4 pages · Cut &amp; stick</small></div>
 <button class="btn" onclick="window.print()">🖨️ PRINT 5 PAGES (30 QR CODES)</button>
 <div id="pages"></div>
 <script>
 const urls=["https://banditbudz.com/products/gushers-01.html","https://banditbudz.com/products/gushers-02.html","https://banditbudz.com/products/gushers-03.html","https://banditbudz.com/products/gushers-04.html","https://banditbudz.com/products/gushers-05.html","https://banditbudz.com/products/gushers-06.html","https://banditbudz.com/products/gushers-07.html","https://banditbudz.com/products/gushers-08.html","https://banditbudz.com/products/gushers-09.html","https://banditbudz.com/products/gushers-10.html","https://banditbudz.com/products/gushers-11.html","https://banditbudz.com/products/gushers-12.html","https://banditbudz.com/products/gushers-13.html","https://banditbudz.com/products/gushers-14.html","https://banditbudz.com/products/gushers-15.html","https://banditbudz.com/products/gushers-16.html","https://banditbudz.com/products/gushers-17.html","https://banditbudz.com/products/gushers-18.html","https://banditbudz.com/products/gushers-19.html","https://banditbudz.com/products/gushers-20.html","https://banditbudz.com/products/gushers-21.html","https://banditbudz.com/products/gushers-22.html","https://banditbudz.com/products/gushers-23.html","https://banditbudz.com/products/gushers-24.html","https://banditbudz.com/products/gushers-25.html","https://banditbudz.com/products/gushers-26.html","https://banditbudz.com/products/gushers-27.html","https://banditbudz.com/products/gushers-28.html","https://banditbudz.com/products/gushers-29.html","https://banditbudz.com/products/gushers-30.html"];
 const pagesDiv=document.getElementById('pages');
-for(let p=0;p<5;p++){
-  const pg=document.createElement('div');
-  pg.className='a4';
-  for(let s=0;s<6;s++){
-    const i=p*6+s;
-    const num=String(i+1).padStart(2,'0');
-    const el=document.createElement('div');
-    el.className='sticker';
-    el.innerHTML=`<div class="s-top">Gushers</div><div class="qr-wrap" id="q${i}"></div><div class="s-num">#${num}</div><div class="s-dates">Cultivated: 06 Jan 2026<br>Packaged: 13 Mar 2026</div><div class="s-brand">BANDIT BUDZ</div>`;
-    pg.appendChild(el);
-  }
-  pagesDiv.appendChild(pg);
-}
-window.addEventListener('load',()=>{
-  urls.forEach((url,i)=>{
-    new QRCode(document.getElementById('q'+i),{text:url,width:130,height:130,colorDark:'#000',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.M});
-  });
-});
-</script>
-</body>
-</html>
+for(let p=0;p<5;p++){const pg=document.createElement('div');pg.className='a4';for(let s=0;s<6;s++){const i=p*6+s;const num=String(i+1).padStart(2,'0');const el=document.createElement('div');el.className='sticker';el.innerHTML=`<div class="s-top">Gushers</div><div class="qr-wrap" id="q${i}"></div><div class="s-num">#${num}</div><div class="s-dates">Cultivated: 06 Jan 2026<br>Packaged: 13 Mar 2026</div><div class="s-brand">BANDIT BUDZ</div>`;pg.appendChild(el);}pagesDiv.appendChild(pg);}
+window.addEventListener('load',()=>{urls.forEach((url,i)=>{new QRCode(document.getElementById('q'+i),{text:url,width:130,height:130,colorDark:'#000',colorLight:'#fff',correctLevel:QRCode.CorrectLevel.M});});});
+</script></body></html>
